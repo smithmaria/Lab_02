@@ -130,7 +130,7 @@ public class Worker extends Person {
     public String toJSON() {
         String personJSON = super.toJSON();
         String result = personJSON.substring(0, personJSON.lastIndexOf("}"));
-        result += "\"hourlyPayRate\":" + hourlyPayRate + "\n}";
+        result += "\"HourlyPayRate\":" + hourlyPayRate + "\n}";
         return result;
     }
 
