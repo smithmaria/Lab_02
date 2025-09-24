@@ -163,7 +163,7 @@ public class PersonTest {
      */
     @Test
     void testToXML() {
-        String expected = "<models.Person><ID>12345</ID><firstName>John</firstName><lastName>Doe</lastName><title>Mr.</title><YOB>1990</YOB></models.Person>";
+        String expected = "<Person><ID>12345</ID><firstName>John</firstName><lastName>Doe</lastName><title>Mr.</title><YOB>1990</YOB></Person>";
         Assertions.assertEquals(expected, testPerson.toXML());
     }
 
