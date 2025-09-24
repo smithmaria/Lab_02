@@ -1,7 +1,9 @@
+package models;
+
 import java.util.Objects;
 
 /**
- * Product class represents a product with basic information including name, description, ID, and cost.
+ * models.Product class represents a product with basic information including name, description, ID, and cost.
  * This class provides various methods to format and display product information.
  *
  * @author Maria Smith
@@ -130,21 +132,21 @@ public class Product {
      * @return XML formatted string
      */
     public String toXML() {
-        return "<Product>" +
+        return "<models.Product>" +
                 "<name>" + name + "</name>" +
                 "<description>" + description + "</description>" +
                 "<ID>" + ID + "</ID>" +
                 "<cost>" + cost + "</cost>" +
-                "</Product>";
+                "</models.Product>";
     }
 
     /**
-     * Returns a string representation of the Product object
+     * Returns a string representation of the models.Product object
      * @return String representation showing all field values
      */
     @Override
     public String toString() {
-        return "Product{" +
+        return "models.Product{" +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", ID='" + ID + '\'' +
@@ -153,7 +155,7 @@ public class Product {
     }
 
     /**
-     * Compares this Product object with another object for equality
+     * Compares this models.Product object with another object for equality
      * @param obj The object to compare with
      * @return true if the objects are equal, false otherwise
      */
@@ -170,7 +172,7 @@ public class Product {
     }
 
     /**
-     * Generates hash code for this Product object
+     * Generates hash code for this models.Product object
      * @return hash code value
      */
     @Override

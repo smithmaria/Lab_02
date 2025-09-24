@@ -1,7 +1,9 @@
+package utils;
+
 import java.util.Scanner;
 
 /**
- * Object-oriented version of SafeInput utility class
+ * Object-oriented version of utils.SafeInput utility class
  * Provides safe input methods for console interaction
  *
  * @author Maria Smith

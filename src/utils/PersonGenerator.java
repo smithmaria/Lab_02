@@ -1,3 +1,7 @@
+package utils;
+
+import models.Person;
+
 import java.util.Scanner;
 import java.io.*;
 import java.nio.file.Files;
@@ -11,7 +15,7 @@ public class PersonGenerator
 {
     public static void main(String[] args)
     {
-        // Changed from ArrayList<String> to ArrayList<Person>
+        // Changed from ArrayList<String> to ArrayList<models.Person>
         ArrayList<Person> people = new ArrayList<>();
 
         Scanner in = new Scanner(System.in);
@@ -33,10 +37,10 @@ public class PersonGenerator
             title = SafeInput.getNonZeroLenString(in, "Enter your Title");
             yob = SafeInput.getRangedInt(in, "Enter the year of your birth", 1000, 9999);
 
-            // Create a Person object instead of a string
+            // Create a models.Person object instead of a string
             Person person = new Person(ID, fName, lName, title, yob);
 
-            // Add the Person object to the ArrayList
+            // Add the models.Person object to the ArrayList
             people.add(person);
 
             doneInput = SafeInput.getYNConfirm(in, "Are you done entering records?");
@@ -65,7 +69,7 @@ public class PersonGenerator
                     new BufferedWriter(new OutputStreamWriter(out));
 
             // Finally can write the file LOL!
-            // Use the Person's toCSV() method to write each record
+            // Use the models.Person's toCSV() method to write each record
             for(Person person : people)
             {
                 String csvRecord = person.toCSV(); // Use the toCSV() method we created

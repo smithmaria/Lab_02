@@ -1,11 +1,13 @@
+package tests;
+
+import models.Person;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.beans.Transient;
-
 /**
- * Junit test class for Person class
+ * Junit test class for models.Person class
  * Tests constructors, setter methods, and additional specified methods
  * (Getter methods not tested)
  * 
@@ -34,11 +36,11 @@ public class PersonTest {
     void testMainConstructor() {
         Person person = new Person("99999", "Alice", "Brown", "Dr.", 1975);
 
-        assertEquals("99999", person.getID());
-        assertEquals("Alice", person.getFirstName());
-        assertEquals("Brown", person.getLastName());
-        assertEquals("Dr.", person.getTitle());
-        assertEquals(1975, person.getYOB());
+        Assertions.assertEquals("99999", person.getID());
+        Assertions.assertEquals("Alice", person.getFirstName());
+        Assertions.assertEquals("Brown", person.getLastName());
+        Assertions.assertEquals("Dr.", person.getTitle());
+        Assertions.assertEquals(1975, person.getYOB());
     }
 
     /**
@@ -48,11 +50,11 @@ public class PersonTest {
     void testConstructorWithoutTitle() {
         Person person = new Person("99999", "Alice", "Brown", 1975);
 
-        assertEquals("99999", person.getID());
-        assertEquals("Alice", person.getFirstName());
-        assertEquals("Brown", person.getLastName());
-        assertEquals("", person.getTitle());
-        assertEquals(1975, person.getYOB());
+        Assertions.assertEquals("99999", person.getID());
+        Assertions.assertEquals("Alice", person.getFirstName());
+        Assertions.assertEquals("Brown", person.getLastName());
+        Assertions.assertEquals("", person.getTitle());
+        Assertions.assertEquals(1975, person.getYOB());
     }
 
     /**
@@ -61,7 +63,7 @@ public class PersonTest {
     @Test
     void testSetFirstName() {
         testPerson.setFirstName("John");
-        assertEquals("John", testPerson.getFirstName());
+        Assertions.assertEquals("John", testPerson.getFirstName());
     }
 
     /**
@@ -70,7 +72,7 @@ public class PersonTest {
     @Test
     void testSetLastName() {
         testPerson.setLastName("Smith");
-        assertEquals("Smith", testPerson.getLastName());
+        Assertions.assertEquals("Smith", testPerson.getLastName());
     }
 
     /**
@@ -79,7 +81,7 @@ public class PersonTest {
     @Test
     void testSetTitle() {
         testPerson.setTitle("Dr.");
-        assertEquals("Dr.", testPerson.getTitle());
+        Assertions.assertEquals("Dr.", testPerson.getTitle());
     }
 
     /**
@@ -88,7 +90,7 @@ public class PersonTest {
     @Test
     void testSetYOB() {
         testPerson.setYOB(1990);
-        assertEquals(1990, testPerson.getYOB());
+        Assertions.assertEquals(1990, testPerson.getYOB());
     }
 
     /**
@@ -96,8 +98,8 @@ public class PersonTest {
      */
     @Test
     void testFullName() {
-        assertEquals("John Doe", testPerson.fullName());
-        assertEquals("Jane Smith", testPerson2.fullName());
+        Assertions.assertEquals("John Doe", testPerson.fullName());
+        Assertions.assertEquals("Jane Smith", testPerson2.fullName());
     }
 
     /**
@@ -105,7 +107,7 @@ public class PersonTest {
      */
     @Test
     void testFormalNameWithTitle() {
-        assertEquals("Mr. John Doe", testPerson.formalName());
+        Assertions.assertEquals("Mr. John Doe", testPerson.formalName());
     }
 
     /**
@@ -113,7 +115,7 @@ public class PersonTest {
      */
     @Test
     void testFormalNameWithoutTitle() {
-        assertEquals("Jane Smith", testPerson2.formalName()); // Should just return fullName
+        Assertions.assertEquals("Jane Smith", testPerson2.formalName()); // Should just return fullName
     }
 
     /**
@@ -131,8 +133,8 @@ public class PersonTest {
      */
     @Test
     void testGetAgeSpecificYear() {
-        assertEquals("30", testPerson.getAge(2020)); // Born 1990, age in 2020 = 30
-        assertEquals("35", testPerson2.getAge(2020)); // Born 1985, age in 2020 = 35
+        Assertions.assertEquals("30", testPerson.getAge(2020)); // Born 1990, age in 2020 = 30
+        Assertions.assertEquals("35", testPerson2.getAge(2020)); // Born 1985, age in 2020 = 35
     }
 
     /**
@@ -141,10 +143,10 @@ public class PersonTest {
     @Test
     void testToCSV() {
         String expected = "12345,John,Doe,Mr.,1990";
-        assertEquals(expected, testPerson.toCSV());
+        Assertions.assertEquals(expected, testPerson.toCSV());
 
         String expected2 = "67890,Jane,Smith,,1985";
-        assertEquals(expected2, testPerson2.toCSV());
+        Assertions.assertEquals(expected2, testPerson2.toCSV());
     }
 
     /**
@@ -153,7 +155,7 @@ public class PersonTest {
     @Test
     void testToJSON() {
         String expected = "{\"ID\":\"12345\",\"firstName\":\"John\",\"lastName\":\"Doe\",\"title\":\"Mr.\",\"YOB\":1990}";
-        assertEquals(expected, testPerson.toJSON());
+        Assertions.assertEquals(expected, testPerson.toJSON());
     }
 
     /**
@@ -161,8 +163,8 @@ public class PersonTest {
      */
     @Test
     void testToXML() {
-        String expected = "<Person><ID>12345</ID><firstName>John</firstName><lastName>Doe</lastName><title>Mr.</title><YOB>1990</YOB></Person>";
-        assertEquals(expected, testPerson.toXML());
+        String expected = "<models.Person><ID>12345</ID><firstName>John</firstName><lastName>Doe</lastName><title>Mr.</title><YOB>1990</YOB></models.Person>";
+        Assertions.assertEquals(expected, testPerson.toXML());
     }
 
     /**
@@ -186,8 +188,8 @@ public class PersonTest {
         Person person1 = new Person("12345", "John", "Doe", "Mr.", 1990);
         Person person2 = new Person("12345", "John", "Doe", "Mr.", 1990);
 
-        assertTrue(person1.equals(person2));
-        assertTrue(person2.equals(person1)); // Test symmetry
+        Assertions.assertTrue(person1.equals(person2));
+        Assertions.assertTrue(person2.equals(person1)); // Test symmetry
     }
 
     /**
@@ -197,7 +199,7 @@ public class PersonTest {
     void testEqualsFalse() {
         Person differentPerson = new Person("12345","Jane", "Doe",  "Mr.", 1990);
 
-        assertFalse(testPerson.equals(differentPerson));
+        Assertions.assertFalse(testPerson.equals(differentPerson));
     }
 
     /**
@@ -205,7 +207,7 @@ public class PersonTest {
      */
     @Test
     void testEqualsNull() {
-        assertFalse(testPerson.equals(null));
+        Assertions.assertFalse(testPerson.equals(null));
     }
 
     /**
@@ -214,7 +216,7 @@ public class PersonTest {
     @Test
     void testEqualsDifferentClass() {
         String notAPerson = "Not a person";
-        assertFalse(testPerson.equals(notAPerson));
+        Assertions.assertFalse(testPerson.equals(notAPerson));
     }
 
     /**
@@ -222,7 +224,7 @@ public class PersonTest {
      */
     @Test
     void testEqualsSelf() {
-        assertTrue(testPerson.equals(testPerson));
+        Assertions.assertTrue(testPerson.equals(testPerson));
     }
 
     /**
@@ -233,7 +235,7 @@ public class PersonTest {
         Person person1 = new Person("12345", "John", "Doe", "Mr.", 1990);
         Person person2 = new Person("12345", "John", "Doe", "Mr.", 1990);
 
-        assertEquals(person1.hashCode(), person2.hashCode());
+        Assertions.assertEquals(person1.hashCode(), person2.hashCode());
     }
 
     /**

@@ -1,6 +1,10 @@
+package tests;
+
+import utils.SafeInputObj;
+
 /**
- * Demonstration program to test SafeInputObj methods
- * This program tests each method in SafeInputObj to show they work correctly
+ * Demonstration program to test utils.SafeInputObj methods
+ * This program tests each method in utils.SafeInputObj to show they work correctly
  *
  * @author Maria Smith
  */
@@ -8,11 +12,11 @@
 public class ObjInputTest {
 
     public static void main(String[] args) {
-        // Create a SafeInputObj instance
+        // Create a utils.SafeInputObj instance
         SafeInputObj safeInput = new SafeInputObj();
 
-        System.out.println("=== SafeInputObj Test Program ===");
-        System.out.println("This program will test each method in SafeInputObj");
+        System.out.println("=== utils.SafeInputObj Test Program ===");
+        System.out.println("This program will test each method in utils.SafeInputObj");
         System.out.println();
 
         // Test getNonZeroLenString
@@ -68,6 +72,6 @@ public class ObjInputTest {
         System.out.println("Likes Java: " + (likesJava ? "Yes" : "No"));
         System.out.println("Email: " + email);
         System.out.println();
-        System.out.println("All SafeInputObj methods tested successfully!");
+        System.out.println("All utils.SafeInputObj methods tested successfully!");
     }
 }

@@ -1,3 +1,7 @@
+package utils;
+
+import models.Product;
+
 import javax.swing.*;
 import java.io.*;
 import java.nio.file.Files;
@@ -6,30 +10,22 @@ import java.util.ArrayList;
 
 import static java.nio.file.StandardOpenOption.CREATE;
 
-public class PersonReader
+public class ProductReader
 {
     public static void main(String[] args)
     {
         JFileChooser chooser = new JFileChooser();
         File selectedFile;
         String rec = "";
-        ArrayList<Person> people = new ArrayList<>();
+        // Changed from ArrayList<String> to ArrayList<models.Product>
+        ArrayList<Product> products = new ArrayList<>();
 
-        /*
-        Here is the data file we are reading:
-        000001, Bilbo, Baggins, Esq., 1060
-        000002, Frodo, Baggins, Esq., 1120
-        000003, Samwise, Gamgee, Esq., 1125
-        000004, Peregrin, Took, Esq., 1126
-        000005, Meridoc, Brandybuck, Esq., 1126
-        */
+        final int FIELDS_LENGTH = 4;
 
-        final int FIELDS_LENGTH = 5;
+        String id, name, description;
+        double cost;
 
-        String id, firstName, lastName, title;
-        int yob;
-
-        System.out.print("\nChoose a person file to be read");
+        System.out.print("\nChoose a file to be read");
 
         try
         {
@@ -50,51 +46,44 @@ public class PersonReader
                 BufferedReader reader =
                         new BufferedReader(new InputStreamReader(in));
 
-                // Finally we can read the file LOL!
-                int line = 0;  // if we want to keep track of the line numbers
-
                 while(reader.ready())
                 {
                     rec = reader.readLine();
 
-                    // Split the line into fields and create Person object
+                    // Split the line into fields and create models.Product object
                     String[] fields = rec.split(",");
 
                     if(fields.length == FIELDS_LENGTH)
                     {
-                        id        = fields[0].trim();
-                        firstName = fields[1].trim();
-                        lastName  = fields[2].trim();
-                        title     = fields[3].trim();
-                        yob       = Integer.parseInt(fields[4].trim());
+                        id          = fields[0].trim();
+                        name        = fields[1].trim();
+                        description = fields[2].trim();
+                        cost        = Double.parseDouble(fields[3].trim());
 
-                        // Create a Person object and add to ArrayList
-                        // Note: Using your constructor order: ID, firstName, lastName, title, YOB
-                        Person person = new Person(id, firstName, lastName, title, yob);
-                        people.add(person);
+                        // Create a models.Product object and add to ArrayList
+                        Product product = new Product(name, description, id, cost);
+                        products.add(product);
                     }
                     else
                     {
                         System.out.println("Found a record that may be corrupt: ");
                         System.out.println(rec);
                     }
-                    line++;
                 }
                 reader.close(); // must close the file to seal it and flush buffer
                 System.out.println("\n\nData file read!");
 
-                // Now display the people from the ArrayList using Person objects
-                System.out.printf("\n%-8s%-25s%-25s%-6s%6s", "ID#", "First Name", "Last Name", "Title", "YOB");
-                System.out.print("\n======================================================================");
+                // Now display the products from the ArrayList using models.Product objects
+                System.out.printf("\n%-8s%-20s%-30s%-6s", "ID#", "Name", "Description", "Cost");
+                System.out.print("\n===================================================================");
 
-                for(Person person : people)
+                for(Product product : products)
                 {
-                    System.out.printf("\n%-8s%-25s%-25s%-6s%6d",
-                            person.getID(),
-                            person.getFirstName(),
-                            person.getLastName(),
-                            person.getTitle(),
-                            person.getYOB());
+                    System.out.printf("\n%-8s%-20s%-30s%-6.2f",
+                            product.getID(),
+                            product.getName(),
+                            product.getDescription(),
+                            product.getCost());
                 }
             }
             else  // user closed the file dialog without choosing

@@ -1,5 +1,6 @@
+package utils;
+
 import java.io.*;
-import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -13,7 +14,7 @@ public class ProductWriter
     public static void main(String[] args)
     {
 
-        //Product fields
+        //models.Product fields
         String id = "";
         String name = "";
         String description = "";

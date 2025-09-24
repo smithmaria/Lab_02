@@ -1,9 +1,13 @@
+package tests;
+
+import models.Product;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * JUnit test class for Product class
+ * JUnit test class for models.Product class
  * Tests constructors, setter methods, and additional specified methods
  * Note: Getter methods are not tested as per assignment requirements
  *
@@ -21,7 +25,7 @@ public class ProductTest {
      */
     @BeforeEach
     void setUp() {
-        // Create test Product objects for use in tests
+        // Create test models.Product objects for use in tests
         testProduct = new Product("Widget", "A useful widget", "12345", 19.99);
         testProduct2 = new Product("Gadget", "67890", 29.99); // No description
         testProduct3 = new Product("Tool", "11111"); // Just name and ID
@@ -34,10 +38,10 @@ public class ProductTest {
     void testMainConstructor() {
         Product product = new Product("TestItem", "Test description", "99999", 49.99);
 
-        assertEquals("TestItem", product.getName());
-        assertEquals("Test description", product.getDescription());
-        assertEquals("99999", product.getID());
-        assertEquals(49.99, product.getCost(), 0.01); // Delta for double comparison
+        Assertions.assertEquals("TestItem", product.getName());
+        Assertions.assertEquals("Test description", product.getDescription());
+        Assertions.assertEquals("99999", product.getID());
+        Assertions.assertEquals(49.99, product.getCost(), 0.01); // Delta for double comparison
     }
 
     /**
@@ -47,10 +51,10 @@ public class ProductTest {
     void testConstructorWithoutDescription() {
         Product product = new Product("SimpleItem", "55555", 15.99);
 
-        assertEquals("SimpleItem", product.getName());
-        assertEquals("", product.getDescription()); // Should default to empty string
-        assertEquals("55555", product.getID());
-        assertEquals(15.99, product.getCost(), 0.01);
+        Assertions.assertEquals("SimpleItem", product.getName());
+        Assertions.assertEquals("", product.getDescription()); // Should default to empty string
+        Assertions.assertEquals("55555", product.getID());
+        Assertions.assertEquals(15.99, product.getCost(), 0.01);
     }
 
     /**
@@ -60,10 +64,10 @@ public class ProductTest {
     void testConstructorNameAndIdOnly() {
         Product product = new Product("BasicItem", "77777");
 
-        assertEquals("BasicItem", product.getName());
-        assertEquals("", product.getDescription()); // Should default to empty string
-        assertEquals("77777", product.getID());
-        assertEquals(0.0, product.getCost(), 0.01); // Should default to 0.0
+        Assertions.assertEquals("BasicItem", product.getName());
+        Assertions.assertEquals("", product.getDescription()); // Should default to empty string
+        Assertions.assertEquals("77777", product.getID());
+        Assertions.assertEquals(0.0, product.getCost(), 0.01); // Should default to 0.0
     }
 
     /**
@@ -72,7 +76,7 @@ public class ProductTest {
     @Test
     void testSetName() {
         testProduct.setName("Super Widget");
-        assertEquals("Super Widget", testProduct.getName());
+        Assertions.assertEquals("Super Widget", testProduct.getName());
     }
 
     /**
@@ -81,7 +85,7 @@ public class ProductTest {
     @Test
     void testSetDescription() {
         testProduct.setDescription("An amazing widget");
-        assertEquals("An amazing widget", testProduct.getDescription());
+        Assertions.assertEquals("An amazing widget", testProduct.getDescription());
     }
 
     /**
@@ -90,7 +94,7 @@ public class ProductTest {
     @Test
     void testSetCost() {
         testProduct.setCost(24.99);
-        assertEquals(24.99, testProduct.getCost(), 0.01);
+        Assertions.assertEquals(24.99, testProduct.getCost(), 0.01);
     }
 
     /**
@@ -99,10 +103,10 @@ public class ProductTest {
     @Test
     void testToCSV() {
         String expected = "Widget,A useful widget,12345,19.99";
-        assertEquals(expected, testProduct.toCSV());
+        Assertions.assertEquals(expected, testProduct.toCSV());
 
         String expected2 = "Gadget,,67890,29.99"; // Empty description
-        assertEquals(expected2, testProduct2.toCSV());
+        Assertions.assertEquals(expected2, testProduct2.toCSV());
     }
 
     /**
@@ -111,7 +115,7 @@ public class ProductTest {
     @Test
     void testToJSON() {
         String expected = "{\"name\":\"Widget\",\"description\":\"A useful widget\",\"ID\":\"12345\",\"cost\":19.99}";
-        assertEquals(expected, testProduct.toJSON());
+        Assertions.assertEquals(expected, testProduct.toJSON());
     }
 
     /**
@@ -119,8 +123,8 @@ public class ProductTest {
      */
     @Test
     void testToXML() {
-        String expected = "<Product><name>Widget</name><description>A useful widget</description><ID>12345</ID><cost>19.99</cost></Product>";
-        assertEquals(expected, testProduct.toXML());
+        String expected = "<models.Product><name>Widget</name><description>A useful widget</description><ID>12345</ID><cost>19.99</cost></models.Product>";
+        Assertions.assertEquals(expected, testProduct.toXML());
     }
 
     /**
@@ -143,8 +147,8 @@ public class ProductTest {
         Product product1 = new Product("Widget", "A useful widget", "12345", 19.99);
         Product product2 = new Product("Widget", "A useful widget", "12345", 19.99);
 
-        assertTrue(product1.equals(product2));
-        assertTrue(product2.equals(product1)); // Test symmetry
+        Assertions.assertTrue(product1.equals(product2));
+        Assertions.assertTrue(product2.equals(product1)); // Test symmetry
     }
 
     /**
@@ -154,7 +158,7 @@ public class ProductTest {
     void testEqualsFalse() {
         Product differentProduct = new Product("Different", "A useful widget", "12345", 19.99);
 
-        assertFalse(testProduct.equals(differentProduct));
+        Assertions.assertFalse(testProduct.equals(differentProduct));
     }
 
     /**
@@ -162,7 +166,7 @@ public class ProductTest {
      */
     @Test
     void testEqualsNull() {
-        assertFalse(testProduct.equals(null));
+        Assertions.assertFalse(testProduct.equals(null));
     }
 
     /**
@@ -171,7 +175,7 @@ public class ProductTest {
     @Test
     void testEqualsDifferentClass() {
         String notAProduct = "Not a product";
-        assertFalse(testProduct.equals(notAProduct));
+        Assertions.assertFalse(testProduct.equals(notAProduct));
     }
 
     /**
@@ -179,7 +183,7 @@ public class ProductTest {
      */
     @Test
     void testEqualsSelf() {
-        assertTrue(testProduct.equals(testProduct));
+        Assertions.assertTrue(testProduct.equals(testProduct));
     }
 
     /**
@@ -190,7 +194,7 @@ public class ProductTest {
         Product product1 = new Product("Widget", "A useful widget", "12345", 19.99);
         Product product2 = new Product("Widget", "A useful widget", "12345", 19.99);
 
-        assertEquals(product1.hashCode(), product2.hashCode());
+        Assertions.assertEquals(product1.hashCode(), product2.hashCode());
     }
 
     /**

@@ -1,11 +1,16 @@
+package tests;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import models.Worker;
+
 /**
- * Junit test class for Worker class
+ * Junit test class for models.Worker class
  * Tests constructors, setter methods, and additional specified methods
  *
  * @author Maria Smith
@@ -28,12 +33,12 @@ public class WorkerTest {
      */
     @Test
     void testConstructor() {
-        assertEquals("11111", worker.getID());
-        assertEquals("Test", worker.getFirstName());
-        assertEquals("Name", worker.getLastName());
-        assertEquals("Dr.", worker.getTitle());
-        assertEquals(2000, worker.getYOB());
-        assertEquals(20.00, worker.getHourlyPayRate());
+        Assertions.assertEquals("11111", worker.getID());
+        Assertions.assertEquals("Test", worker.getFirstName());
+        Assertions.assertEquals("Name", worker.getLastName());
+        Assertions.assertEquals("Dr.", worker.getTitle());
+        Assertions.assertEquals(2000, worker.getYOB());
+        Assertions.assertEquals(20.00, worker.getHourlyPayRate());
     }
 
     /**
@@ -63,7 +68,7 @@ public class WorkerTest {
     @Test
     void testSetHourlyPayRate() {
         worker.setHourlyPayRate(25.50);
-        assertEquals(25.50, worker.getHourlyPayRate(), 0.01);
+        Assertions.assertEquals(25.50, worker.getHourlyPayRate(), 0.01);
     }
 
     /**

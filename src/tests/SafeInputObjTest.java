@@ -1,11 +1,16 @@
+package tests;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+import utils.SafeInputObj;
+
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.Scanner;
 import java.io.ByteArrayInputStream;
 
+
 /**
- * JUnit test class for SafeInputObj class
+ * JUnit test class for utils.SafeInputObj class
  * Tests constructors and methods using simulated input
  * Note: Interactive methods are tested with pre-programmed input strings
  *
@@ -22,10 +27,10 @@ public class SafeInputObjTest {
      */
     @BeforeEach
     void setUp() {
-        // Create SafeInputObj with default constructor
+        // Create utils.SafeInputObj with default constructor
         safeInputDefault = new SafeInputObj();
 
-        // Create SafeInputObj with custom Scanner for testing
+        // Create utils.SafeInputObj with custom Scanner for testing
         String simulatedInput = "test\n5\n25.5\nY\nvalid123\n";
         ByteArrayInputStream inputStream = new ByteArrayInputStream(simulatedInput.getBytes());
         Scanner testScanner = new Scanner(inputStream);

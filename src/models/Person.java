@@ -1,8 +1,10 @@
+package models;
+
 import java.util.Objects;
 import java.util.Calendar;
 
 /**
- * Person class represents a person with basic information including name, ID, title, and year of birth.
+ * models.Person class represents a person with basic information including name, ID, title, and year of birth.
  * This class provides various methods to format and display person information.
  * 
  * @author Maria Smith
@@ -144,7 +146,7 @@ public class Person {
 
     /**
      * Calculates and returns the person's current age assuming current year
-     * @return Person's age as a string
+     * @return models.Person's age as a string
      */
     public String getAge() {
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
@@ -188,22 +190,22 @@ public class Person {
      * @return XML formatted string
      */
     public String toXML() {
-        return "<Person>" +
+        return "<models.Person>" +
                 "<ID>" + ID + "</ID>" +
                 "<firstName>" + firstName + "</firstName>" +
                 "<lastName>" + lastName + "</lastName>" +
                 "<title>" + title + "</title>" +
                 "<YOB>" + YOB + "</YOB>" +
-                "</Person>";    
+                "</models.Person>";
     }
 
     /**
-     * Returns string representation of the Person object
+     * Returns string representation of the models.Person object
      * @return String representation showing all field values
      */
     @Override
     public String toString() {
-        return "Person{" +
+        return "models.Person{" +
                 ", ID='" + ID + '\'' +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
@@ -213,7 +215,7 @@ public class Person {
     }
 
     /**
-     * Compares this Person object with another object for equality
+     * Compares this models.Person object with another object for equality
      * @param obj - the object to compare with
      * @return true if the objects are euqal, false otherwise
      */
@@ -231,7 +233,7 @@ public class Person {
     }
 
     /**
-     * Generates hash code for this Person object
+     * Generates hash code for this models.Person object
      * @return hash code value
      */
     @Override

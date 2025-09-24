@@ -1,6 +1,8 @@
+package models;
+
 /**
- * Worker class extends Person to represent a worker with hourly pay
- * Inherits all Person fields and methods, adds hourly pay functionality
+ * models.Worker class extends models.Person to represent a worker with hourly pay
+ * Inherits all models.Person fields and methods, adds hourly pay functionality
  * @author Maria Smith
  */
 
@@ -8,13 +10,13 @@ public class Worker extends Person {
     private double hourlyPayRate;
 
     /**
-     * Constructor for Worker class
-     * Uses super() to call Person constructor, then sets hourly pay rate
-     * @param ID unique identifier (passed to Person)
-     * @param firstName first name (passed to Person)
-     * @param lastName last name (passed to Person)
-     * @param title person's title like Sr., Jr. (passed to Person)
-     * @param YOB year of birth (passed to Person)
+     * Constructor for models.Worker class
+     * Uses super() to call models.Person constructor, then sets hourly pay rate
+     * @param ID unique identifier (passed to models.Person)
+     * @param firstName first name (passed to models.Person)
+     * @param lastName last name (passed to models.Person)
+     * @param title person's title like Sr., Jr. (passed to models.Person)
+     * @param YOB year of birth (passed to models.Person)
      * @param hourlyPayRate worker's hourly pay rate
      */
     public Worker(String ID, String firstName, String lastName, String title, int YOB, double hourlyPayRate) {
@@ -24,11 +26,11 @@ public class Worker extends Person {
 
     /**
      * Constructor for worker class without title
-     * Uses super() to call Person constructor, then sets hourly pay rate
-     * @param ID unique identifier (passed to Person)
-     * @param firstName first name (passed to Person)
-     * @param lastName last name (passed to Person)
-     * @param YOB year of birth (passed to Person)
+     * Uses super() to call models.Person constructor, then sets hourly pay rate
+     * @param ID unique identifier (passed to models.Person)
+     * @param firstName first name (passed to models.Person)
+     * @param lastName last name (passed to models.Person)
+     * @param YOB year of birth (passed to models.Person)
      * @param hourlyPayRate worker's hourly pay rate
      */
     public Worker (String ID, String firstName, String lastName, int YOB, double hourlyPayRate) {
@@ -103,7 +105,7 @@ public class Worker extends Person {
 
     /**
      * Override toCSV to include hourly pay rate
-     * @return CSV formatted string with all Person data plus hourly pay rate
+     * @return CSV formatted string with all models.Person data plus hourly pay rate
      */
     @Override
     public String toCSV() {
@@ -112,19 +114,19 @@ public class Worker extends Person {
 
     /**
      * Override to to XML to include hourly pay rate
-     * @return XML formatted string with all Person data plus hourly rate
+     * @return XML formatted string with all models.Person data plus hourly rate
      */
     @Override
     public String toXML() {
         String personXML = super.toXML();
-        String result = personXML.substring(0, personXML.lastIndexOf("</Person>"));
-        result += "\t<HourlyPayRate>" + hourlyPayRate + "</HourlyPayRate>\n</Person>";
+        String result = personXML.substring(0, personXML.lastIndexOf("</models.Person>"));
+        result += "\t<HourlyPayRate>" + hourlyPayRate + "</HourlyPayRate>\n</models.Person>";
         return result;
     }
 
     /**
      * Override toJSON to include hourly pay rate
-     * @return JSON formatted string with all Person data plus hourly pay rate
+     * @return JSON formatted string with all models.Person data plus hourly pay rate
      */
     @Override
     public String toJSON() {
@@ -136,7 +138,7 @@ public class Worker extends Person {
 
     /**
      * Override toString to include hourly pay rate information
-     * @return formatted string representation of Worker
+     * @return formatted string representation of models.Worker
      */
     @Override
     public String toString() {
