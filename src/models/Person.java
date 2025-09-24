@@ -190,13 +190,13 @@ public class Person {
      * @return XML formatted string
      */
     public String toXML() {
-        return "<models.Person>" +
+        return "<Person>" +
                 "<ID>" + ID + "</ID>" +
                 "<firstName>" + firstName + "</firstName>" +
                 "<lastName>" + lastName + "</lastName>" +
                 "<title>" + title + "</title>" +
                 "<YOB>" + YOB + "</YOB>" +
-                "</models.Person>";
+                "</Person>";
     }
 
     /**

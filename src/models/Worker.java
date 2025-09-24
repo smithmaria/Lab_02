@@ -119,8 +119,8 @@ public class Worker extends Person {
     @Override
     public String toXML() {
         String personXML = super.toXML();
-        String result = personXML.substring(0, personXML.lastIndexOf("</models.Person>"));
-        result += "\t<HourlyPayRate>" + hourlyPayRate + "</HourlyPayRate>\n</models.Person>";
+        String result = personXML.substring(0, personXML.lastIndexOf("</Person>"));
+        result += "\t<HourlyPayRate>" + hourlyPayRate + "</HourlyPayRate>\n</Person>";
         return result;
     }
 
